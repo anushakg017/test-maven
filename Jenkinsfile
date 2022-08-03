@@ -1,20 +1,13 @@
 pipeline {
-    agent any 
-    stages {
-        stage('Build') { 
-            steps {
-                // 
-            }
-        }
-        stage('Test') { 
-            steps {
-                // 
-            }
-        }
-        stage('Deploy') { 
-            steps {
-                // 
-            }
-        }
+    agent any
+    tools {
+        maven 'MAVEN_PATH' 
     }
+    stages {
+         stage('Load Tools') {
+              steps {
+                 sh "mvn --version"
+              }
+         }
+     }
 }
