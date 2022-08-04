@@ -1,13 +1,23 @@
 pipeline {
     agent any
-    tools {
-        maven 'MAVEN_PATH' 
+    tools { 
+        maven 'Maven_home' 
+        jdk 'jdk11' 
     }
     stages {
-         stage('Load Tools') {
-              steps {
-                 sh "mvn --version"
-              }
-         }
-     }
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
+            }
+        }
+
+        stage ('Build') {
+            steps {
+                echo 'This is a minimal pipeline.'
+            }
+        }
+    }
 }
